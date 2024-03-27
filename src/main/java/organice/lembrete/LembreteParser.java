@@ -2,11 +2,11 @@ package organice.lembrete;
 
 public class LembreteParser {
 
-    public static Lembrete to(LembreteIn in) {
+    public static Lembrete to(LembreteIn in, String UserId) {
         return Lembrete.builder()
             .title(in.title())
             .description(in.description())
-            .idUser(in.idUser())
+            .idUser(UserId)
             .inicio(in.inicio())
             .fim(in.fim())
             .build();
