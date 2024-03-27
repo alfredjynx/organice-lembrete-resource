@@ -28,19 +28,19 @@ public class LembreteModel {
     @Column(name = "id_lembrete")
     private String id;
 
-    @Column(name = "tx_title")
+    @Column(name = "lembrete_title")
     private String title;
 
-    @Column(name = "tx_description")
+    @Column(name = "lembrete_description")
     private String description;
 
-    @Column(name = "tx_idUser")
+    @Column(name = "lembrete_idUser")
     private String idUser;
 
-    @Column(name = "tx_inicio")
+    @Column(name = "lembrete_inicio")
     private Date inicio;
 
-    @Column(name = "tx_fim")
+    @Column(name = "lembrete_fim")
     private Date fim;
 
 
