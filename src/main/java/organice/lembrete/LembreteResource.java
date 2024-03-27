@@ -3,6 +3,7 @@ package organice.lembrete;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -13,9 +14,9 @@ public class LembreteResource implements LembreteController {
     private LembreteService lembreteService;
 
     @Override
-    public ResponseEntity<LembreteOut> create(LembreteIn in) {
+    public ResponseEntity<LembreteOut> create(String UserId, LembreteIn in) {
         // parser
-        Lembrete lembrete = LembreteParser.to(in);
+        Lembrete lembrete = LembreteParser.to(in, UserId);
         // insert using service
         lembrete = lembreteService.create(lembrete);
         // return
