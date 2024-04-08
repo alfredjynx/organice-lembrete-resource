@@ -41,5 +41,10 @@ public class LembreteResource implements LembreteController {
         final LembreteOut lembrete = LembreteParser.to(lembreteService.read(id));
         return ResponseEntity.ok(lembrete);
     }
+
+    @Override
+    public ResponseEntity<String> read_teste() {
+        return ResponseEntity.ok("Situação Complicada");
+    }
     
 }

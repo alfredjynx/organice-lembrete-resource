@@ -1,8 +1,10 @@
-CREATE TABLE account
+CREATE TABLE lembrete
 (
-    id_account character varying(36) NOT NULL,
-    tx_name character varying(256) NOT NULL,
-    tx_email character varying(256) NOT NULL,
-    tx_hash character varying(256) NOT NULL,
-    CONSTRAINT account_pkey PRIMARY KEY (id_account)
+    id_lembrete character varying(36) NOT NULL,
+    lembrete_title character varying(256) NOT NULL,
+    lembrete_description character varying(256) NOT NULL,
+    lembrete_id_user character varying(256) NOT NULL,
+    lembrete_inicio character varying(256) NOT NULL,
+    lembrete_fim character varying(256) NOT NULL,
+    CONSTRAINT lembretes_pkey PRIMARY KEY (id_lembrete)
 );
