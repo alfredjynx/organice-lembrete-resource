@@ -34,7 +34,7 @@ public class LembreteModel {
     @Column(name = "lembrete_description")
     private String description;
 
-    @Column(name = "lembrete_idUser")
+    @Column(name = "lembrete_id_user")
     private String idUser;
 
     @Column(name = "lembrete_inicio")
