@@ -17,6 +17,12 @@ spring:
     format:
       date-time: "yyyy-MM-dd HH:mm:ss"
 
+springdoc:
+  api-docs:
+    path: /lembretes/v3/api-docs
+  swagger-ui:
+    path: /lembretes/swagger-ui.html
+
 
 eureka:
   client:

@@ -53,7 +53,7 @@ public class LembreteModel {
         this.fim = in.fim();
     } 
 
-    public Lembrete to(){
+    public  Lembrete to(){
         return Lembrete.builder()
             .id(id)
             .title(title)
