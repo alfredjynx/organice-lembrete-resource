@@ -2,7 +2,6 @@ package organice.lembrete;
 
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,11 +59,14 @@ public class LembreteResource implements LembreteController {
     @Override
     @Operation(summary = "Retorna todos os lembretes de um usuário em certa data", description = "Retorna todos os lembretes de um usuário em certa data")
     public ResponseEntity<List<LembreteOut>> getByDate(String UserId, LembreteDateIn data) {
-        // TODO Auto-generated method stub
 
         List<Lembrete> lembretes = lembreteService.getByData(UserId, data.data());
 
-        List<LembreteOut> saida = new ArrayList<LembreteOut>();
+        if(lembretes == null){
+            return ResponseEntity.notFound().build();
+        }
+
+        List<LembreteOut> saida = new ArrayList<>();
 
         for(Lembrete i : lembretes){
             saida.add(LembreteParser.to(i));

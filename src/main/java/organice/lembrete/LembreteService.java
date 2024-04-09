@@ -3,6 +3,7 @@ package organice.lembrete;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,15 +30,6 @@ public class LembreteService {
     }
 
     public List<Lembrete> getByData(String idUser, Date data){
-        List<LembreteModel> lembretes = lembreteRepository.findByIdUserAndInicio(idUser, data);
-
-        List<Lembrete> saida = new ArrayList<Lembrete>();
-
-        for(LembreteModel i : lembretes){
-            Lembrete l = i.to();
-            saida.add(l);
-        }
-
-        return saida;
+        return lembreteRepository.findByIdUserAndInicio(idUser, data).stream().map(LembreteModel::to).collect(Collectors.toList());
     }
 }
