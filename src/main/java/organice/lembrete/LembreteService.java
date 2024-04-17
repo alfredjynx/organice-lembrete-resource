@@ -1,7 +1,6 @@
 package organice.lembrete;
 
-import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +28,7 @@ public class LembreteService {
         return lembreteRepository.findByIdUserAndId(idUser, id).map(LembreteModel::to).orElse(null);
     }
 
-    public List<Lembrete> getByData(String idUser, Date data){
+    public List<Lembrete> getByData(String idUser, String data){
         return lembreteRepository.findByIdUserAndInicio(idUser, data).stream().map(LembreteModel::to).collect(Collectors.toList());
     }
 }
