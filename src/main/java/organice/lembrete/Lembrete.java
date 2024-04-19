@@ -1,7 +1,6 @@
 package organice.lembrete;
 
 
-import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,6 +16,6 @@ public class Lembrete {
     String title;
     String description;
     String idUser;
-    Date inicio;
-    Date fim;
+    String inicio;
+    String fim;
 }

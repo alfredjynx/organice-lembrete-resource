@@ -1,7 +1,10 @@
 package organice.lembrete;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,13 @@ public class LembreteService {
     }
 
     public List<Lembrete> getByData(String idUser, String data){
-        return lembreteRepository.findByIdUserAndInicio(idUser, data).stream().map(LembreteModel::to).collect(Collectors.toList());
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+            return lembreteRepository.findByIdUserAndInicio(idUser, formatter.parse(data)).stream().map(LembreteModel::to).collect(Collectors.toList());
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
     }
 }

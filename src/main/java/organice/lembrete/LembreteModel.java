@@ -1,6 +1,8 @@
 package organice.lembrete;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -45,12 +47,18 @@ public class LembreteModel {
 
 
     public LembreteModel(Lembrete in){
-        this.id = in.id();
-        this.title = in.title();
-        this.description = in.description();
-        this.idUser = in.idUser();
-        this.inicio = in.inicio();
-        this.fim = in.fim();
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+            
+            this.id = in.id();
+            this.title = in.title();
+            this.description = in.description();
+            this.idUser = in.idUser();
+            this.inicio = formatter.parse(in.inicio());
+            this.fim = formatter.parse(in.fim());
+        } catch (Exception e) {
+            System.out.println("Não funfou: Lembrete virando Model");
+        }
     } 
 
     public  Lembrete to(){
@@ -59,8 +67,8 @@ public class LembreteModel {
             .title(title)
             .description(description)
             .idUser(idUser)
-            .inicio(inicio)
-            .fim(fim)
+            .inicio(inicio.toString())
+            .fim(fim.toString())
             .build();
     }
 }
