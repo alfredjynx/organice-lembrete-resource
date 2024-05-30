@@ -40,3 +40,8 @@ management:
       base-path: /lembretes/actuator
       exposure:
         include: [ 'prometheus' ]
+
+spring:
+  redis:
+    host: redis
+    port: 6379

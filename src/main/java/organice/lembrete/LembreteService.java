@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+import org.hibernate.annotations.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import lombok.NonNull;
@@ -23,6 +25,7 @@ public class LembreteService {
         return lembreteRepository.save(new LembreteModel(in)).to();
     }
 
+    @Cacheable(value = "lembretes", key = "#idUser")
     public Lembrete read(@NonNull String id) {
         return lembreteRepository.findById(id).map(LembreteModel::to).orElse(null);
     }
